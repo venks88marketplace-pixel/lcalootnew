@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package cal_tool;
+
+enum CameraID {
+	LEFT_CAMERA = 0;
+	RIGHT_CAMERA = 1;
+	WIDE_CAMERA = 2;
+	// order for a pair of images
+	LEFT_RIGHT_CAMERA = 3; 
+	}
+
+enum CameraAction {
+	START_GRABBING = 0;
+	STOP_GRABBING  = 1;
+	}
+			
+enum ImageEncoding {
+	IMAGE_ENCODING_UNSPECIFIED = 0;
+	JPEG = 1;
+	CV_88UC1 = 2;
+	}
+
+message SetNIRLedControls {
+	uint32 power_level = 1;
+	float trigger_frequency_hz = 2;
+	float trigger_duration_hz = 3;
+	}
+	
+message StartUVLed {
+    uint32 irradiance_mw_per_cm2 = 1;
+}
+
+message StartUVLedResponse {
+    uint32 irradiance_mw_per_cm2 = 1;
+    bool is_uv_on = 2;
+}
+
+message StopUVLed {
+	}
+	
+message StopUVLedResponse {
+	bool is_uv_off = 1;
+	}	
+
+message SetNIRLedOutputRequest {
+    float nir_top_intensity_in_percent = 1;
+    float nir_bot_intensity_in_percent = 2;
+    float fixation_intensity_in_percent = 3;
+  }
+
+message SetCameraParams {
+	CameraID camera_id = 1;
+	uint32 gain = 2;
+	uint32 exposure = 3;
+}
+
+message StartGrabbing {
+    CameraID camera_id = 1;
+    uint32 frame_rate = 2;
+}
+
+
+message ImageRequest {
+	oneof msg {
+		CameraID camera_id = 1;
+		ImageEncoding encoding = 2;
+	}
+}
+
+message ImageResponse {
+	CameraID camera_id = 1; 
+	repeated uint32 frame_ids = 2; 
+	ImageEncoding encoding = 3;        
+	bytes image_data = 4;       
+	uint32 width = 5;            
+	uint32 height = 6;           
+}
+
+message CameraCommand {
+    CameraID camera_id =  1;
+    CameraAction camera_action = 2;
+}  
+
+

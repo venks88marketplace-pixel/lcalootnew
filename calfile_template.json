@@ -1,0 +1,370 @@
+{
+    "DMDCalibrationData": {
+        "DateString": "",
+        "gD": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "gK": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0,
+                0.0,
+                0.0,
+                0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "gR": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "gT": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        }
+    },
+    "IRCalibrationData": {
+        "DateString": "",
+        "IRBottom": 0,
+        "IRTop": 0
+    },
+    "NFOVCalibrationData": {
+        "DateString": "",
+        "DisparityToZMatrix": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "EssentialMatrix": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "FundamentalMatrix": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "LeftDistortion": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "LeftIntrinsic": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "LeftProjectionMatrix": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "LeftROI_X": 0,
+        "LeftROI_Y": 0,
+        "RectifiedProjectionLeft": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RectifiedProjectionRight": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RectifyLeft": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RectifyRight": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RightDistortion": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RightIntrinsic": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RightProjectionMatrix": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "RightROI_X": 0,
+        "RightROI_Y": 0,
+        "StereoRotation": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "StereoTranslation": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        },
+        "TransformToInstrumentAxis": {
+            "cols": 0,
+            "data": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "dt": "d",
+            "rows": 0,
+            "type_id": "opencv-matrix"
+        }
+    },
+    "PhotometricCalibration": {
+        "DateString": "",
+        "Exposure": 0,
+        "LeftGain": 0.0,
+        "RightGain": 0.0
+    },
+    "WFOVCalibrationData": {
+        "DateString": "",
+        "LabCenterX": 0.0,
+        "LabCenterY": 0.0,
+        "LabCenterZ": 0.0,
+        "WideROI_Height": 0,
+        "WideROI_Offset_X": 0,
+        "WideROI_Offset_Y": 0,
+        "WideROI_Width": 0
+    },
+    "WFOVPhotometricCalibration": {
+        "DateString": "",
+        "WideExposure": 0,
+        "WideGain": 0.0
+    }
+}

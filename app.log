@@ -1,0 +1,14 @@
+[DBG] addImportPath: "C:/neo-calibration-tool/build/Release/qml"
+[DBG] addImportPath: "qrc:/qt/qml"
+[DBG] addImportPath: "qrc:/qt-project.org/imports"
+[DBG] addImportPath: "C:/neo-calibration-tool/build/Release"
+[DBG] !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "COM3" "Intel(R) Active Management Technology - SOL" "Intel" ""
+[DBG] Creating service:  "AuthService"
+[DBG] Dependencies for "AuthService" : QList()
+[DBG] Invoking factory for: "AuthService"
+[DBG] ServiceRegistry created: "AuthService"
+[DBG] Creating service:  "CameraOffsetProcessor"
+[DBG] Dependencies for "CameraOffsetProcessor" : QList("LoggerService", "NetworkService", "ImageService", "StepperControllerService")
+[DBG] Creating service:  "LoggerService"
+[DBG] Dependencies for "LoggerService" : QList()
+[DBG] Invoking factory for: "LoggerService"

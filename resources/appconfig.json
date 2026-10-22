@@ -1,0 +1,73 @@
+{
+  "services": {
+      "AuthService": {
+        "enabled": true
+    },
+    "LoggerService": {
+        "enabled": true,
+        "mode": "mock"
+    },
+    "SerialPortService": {
+        "enabled": true
+    },	
+    "NetworkService": {
+      "enabled": true,
+      "host": "10.10.10.1",
+      "port": 50051,
+      "depends_on": ["LoggerService"]
+    },
+    "ImageService": {
+      "enabled": true,
+      "depends_on": ["NetworkService","LoggerService"]
+    },
+	"StepperControllerService": {
+      "enabled": true,
+      "depends_on": ["SerialPortService"],
+      "config": {
+        "portName": "COM6"
+      }
+    },
+    "DepthStepperControllerService": {
+      "enabled": true,
+      "depends_on": ["SerialPortService"],
+      "config": {
+        "portName": "COM7"
+      }
+    },	
+    "CameraSettingsService": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService"]
+    },
+    "NIRLedSettingsService": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService"]
+    },
+    "TriggerSettingsService": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService"]
+    },
+    "UVSettingsService": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService"]
+    },
+    "CameraOffsetProcessor": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService", "ImageService", "StepperControllerService"]
+    },
+    "PhotometricProcessor": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService", "ImageService", "StepperControllerService"]
+    },
+    "StereoCalibrationProcessor": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService", "ImageService", "StepperControllerService"]
+    },
+    "DepthSensorService": {
+      "enabled": true,
+      "depends_on": ["LoggerService", "NetworkService", "DepthStepperControllerService"],
+      "config": {
+        "outputDir": "."
+      }
+    }
+  }
+}

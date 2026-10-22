@@ -1,0 +1,190 @@
+{
+  "services": {
+    "AuthService": {
+      "enabled": true
+    },
+    "LoggerService": {
+      "enabled": true,
+      "mode": "mock"
+     },
+    "SerialPortService": {
+      "enabled": true
+    },
+    "NetworkService": {
+      "enabled": true,
+      "mode": "real",
+      "host": "10.10.10.1",
+      "port": 50051,
+      "depends_on": [
+        "LoggerService"
+      ]
+    },
+    "ServerProxyService": {
+      "enabled": true,
+      "mode": "real",
+      "depends_on": [
+        "LoggerService",
+        "NetworkService"
+      ]
+    },
+    "ImageService": {
+      "enabled": true,
+      "mode": "real",
+      "folders": {
+        "stereoFolder": "C:\\calibration\\mock_stereo_images",
+        "stereoVerificationFolder": "C:\\calibration\\mock_stereo_verification_images",
+        "photometricFolder": "C:\\calibration\\mock_photometric_images",
+        "dmdFolder": "C:\\calibration\\mock_dmd_images",
+        "dmdCheckFolder": "C:\\calibration\\mock_dmd_check_images"
+      },
+      "depends_on": [
+        "NetworkService",
+        "LoggerService"
+      ]
+    },
+    "StepperControllerService": {
+      "enabled": true,
+      "mode": "real",
+      "depends_on": [
+        "SerialPortService"
+      ],
+      "config": {
+        "portName": "COM6"
+      }
+    },
+    "DepthStepperControllerService": {
+      "enabled": true,
+      "depends_on": [
+        "SerialPortService"
+      ],
+      "config": {
+        "portName": "COM7"
+      }
+    },
+    "CameraSettingsService": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "NetworkService"
+      ]
+    },
+    "NIRLedSettingsService": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "NetworkService"
+      ]
+    },
+    "TriggerSettingsService": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "NetworkService"
+      ]
+    },
+    "UVSettingsService": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "NetworkService"
+      ]
+    },
+    "CameraOffsetProcessor": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "PhotometricProcessor": {
+      "enabled": true,
+      "PhotometricParams": {
+        "z_position_mm": 11,
+        "camera_gain_range_db": [8.5,11.0],
+        "gain_increment": 0.1,
+        "acceptance_left_right_diff_prcnt": 10.0,
+        "acceptance_criterion_peak_range": [170, 185],
+        "nir_default": 70,
+        "gain_left_camera": 8.5,
+        "gain_right_camera": 8.5,
+        "exposure": 6000
+      },
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "StereoCalibrationProcessor": {
+      "enabled": true,
+      "z_positions_mm": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+      "checker_size_mm": [3.015, 3.018],
+      "checkerboard_dimensions": [10, 8],
+      "acceptance_criterion_rms": 0.175,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "StereoCalibrationVerificationProcessor": {
+      "enabled": true,
+      "z_positions_mm": [6,11,16],
+      "checker_size_mm": [4.0, 4.0],
+      "checkerboard_dimensions": [9, 6],
+      "acceptance_criterion_rms_tolerance": 0.175,
+      "acceptance_criterion_z_tolerance": 0.25,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "DMDCalibrationProcessor": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "DMDCheckProcessor": {
+      "enabled": true,
+      "save_image_folder": "c:/calibration/apps/dmdCheckAnalysis",
+      "z_positions_mm": [12.72, 13.72, 14.72],
+      "checker_size_mm": [3.0, 3.0],
+      "checkerboard_dimentions": [10, 8],
+      "max_error": 0.175,
+      "max_error_3d": 0.25,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "ImageService",
+        "StepperControllerService"
+      ]
+    },
+    "UVAlignmentProcessor": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService"
+      ]
+    },
+    "DepthSensorService": {
+      "enabled": true,
+      "depends_on": [
+        "LoggerService",
+        "ServerProxyService",
+        "DepthStepperControllerService"
+      ],
+      "config": {
+        "outputDir": "."
+      }
+    }
+  }
+}

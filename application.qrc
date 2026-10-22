@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/config">
+        <file alias="default.json">appconfig.json</file>
+        <file>calfile_template.json</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="dotImage_3_5x3.bmp">resources/dotImage_3_5x3.bmp</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,335 @@
+syntax = "proto3";
+
+package CalibrationApi;
+
+message GetAbout {
+}
+
+message About {
+    string version = 1;
+}
+
+enum Camera {
+    UKNOWN_CAMERA = 0;
+    LEFT = 1;
+    RIGHT = 2;
+    WIDE = 3;
+}
+
+enum CameraImageFormat {
+    UNKNOWN_IMAGE_FORMAT = 0;
+    MONO8 = 1;
+    GB8 = 2;
+    PNG = 3;
+}
+
+message CameraImage {
+    string source = 1;
+    bytes image = 2;
+
+    uint32 width = 3;
+    uint32 height = 4;
+    CameraImageFormat format = 6;
+    int64 timestamp_ms = 7;
+}
+
+message SynchronizedCapture {
+    CameraImage left = 1;
+    CameraImage right = 2;
+}
+
+message GetSynchronizedCapture {
+}
+
+message StartVideoStream {
+}
+
+message StopVideoStream {
+}
+
+message StreamFrame {
+    SynchronizedCapture frame = 1;
+    bool is_final = 2;
+}
+
+message ExposureSettings { 
+    Camera camera = 1; 
+    double gain = 2;
+    double exposure_us = 3;         
+}
+
+message SetExposureSettings { 
+    repeated ExposureSettings settings = 1;
+}
+
+message ExposureSettingsReponse {
+    repeated ExposureSettings settings = 1;
+    bool failures = 2;
+}
+
+message RegionOfInterest { 
+    Camera camera = 1;
+    int64 width = 2;
+    int64 height = 3;
+    int64 xoffset = 4;
+    int64 yoffset = 5;
+    bool reversex = 6;
+    bool reversey = 7;
+}
+
+message SetRegionOfInterest { 
+    repeated RegionOfInterest regions = 1;
+}
+
+message RegionOfInterestResponse { 
+    repeated RegionOfInterest regions = 1;
+    bool failures = 2;
+}
+
+message HomeMotors{
+
+}
+
+message MotorsHomed {
+
+}
+
+message NirLedControls {
+    uint32 top_intensity_percent = 1;
+    uint32 bottom_intensity_percent = 2;
+}
+
+message SetNirLedControls {
+    NirLedControls controls = 1;
+}
+
+message NirLedControlsResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CalibrateDmd { 
+    bytes image = 1;
+}
+
+message DmdCalibrated { 
+    bool success = 1;
+}
+
+message CameraTriggerControls {
+    uint32 frequency_hz = 1;
+    uint32 duration_ms = 2;
+}
+
+message SetCameraTriggerControls {
+    CameraTriggerControls controls = 1;
+}
+
+message CameraTriggerControlsResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message StartCalibration {
+    uint32 irradiance_mw_per_cm2 = 1;
+    uint32 dac_count = 2;
+}
+
+message CalibrationTableEntry {
+    uint32 irradiance_mw_per_cm2 = 1;
+    uint32 dac_count = 2;
+    uint32 pd1_count = 3;
+    uint32 pd2_count = 4;
+    uint32 pd3_count = 5;
+    uint32 current_count = 6;
+}
+
+message CalibrationResult {
+    CalibrationTableEntry entry = 1;
+}
+
+message CalibrationResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message StartUvDiagnostic {
+    uint32 dac_counts = 1;
+    uint32 duration_ms = 2;
+}
+
+message CancelUvDiagnostic {
+}
+
+message UvDiagnosticResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message WideCapture {
+    CameraImage wide = 1;
+}
+
+message WideStreamFrame {
+    CameraImage wide = 1;
+    bool is_final = 2;
+}
+
+message GetWideCapture {
+}
+
+message GetWideVideoStream {
+}
+
+message StopWideVideoStream {
+}
+
+message Metrics {
+    float recent_sample = 1;
+    float max = 2;
+    float min = 3;
+    float mean = 4;
+    float std_dev = 5;
+    uint32 num_samples = 6;
+}
+
+message SensorTelemetry {
+    Metrics pd1 = 1;
+    Metrics pd2 = 2;
+    Metrics pd3 = 3;
+    Metrics current = 4;
+}
+
+message DiagnosticResult {
+    SensorTelemetry sensor_telemetry = 1;
+}
+
+message CalibrationTable {
+    repeated CalibrationTableEntry entries = 1;
+}
+
+message UploadCalibrationTable {
+    CalibrationTable table = 1;
+}
+
+message UploadCalibrationTableResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DistanceSensorStartRanging {
+}
+
+message DistanceSensorStopRanging {
+}
+
+message DistanceSensorRangingResult {
+    float distance_to_target_mm = 1;
+}
+
+message SetDistanceSensorDeviceSettings {
+    float gain = 1;
+    float offset = 2;
+}
+
+message SetUvDeviceSettings {
+    uint32 pd1_gain_count = 1;
+    uint32 pd2_gain_count = 2;
+    uint32 pd3_gain_count = 3;
+    uint32 pi_gain_count = 4;
+}
+
+message GetDeviceSettings {
+}
+
+message DeviceSettings {
+    uint32 pd1_gain_count = 1;
+    uint32 pd2_gain_count = 2;
+    uint32 pd3_gain_count = 3;
+    uint32 pi_gain_count = 4;
+    float distance_sensor_gain = 5;
+    float distance_sensor_offset = 6;
+}
+
+message GetStatus {
+}
+
+message Status {
+    float uv_temperature_c = 1;
+    float nfov_left_temperature_c = 2;
+    float nfov_right_temperature_c = 3;
+    float wfov_temperature_c = 4;
+    float dmd_temperature_c = 5;
+    float ambient_temperature_c = 6;
+    float ambient_humidity_rh = 7;
+    uint32 pd1_count = 8;
+    uint32 pd2_count = 9;
+    uint32 pd3_count = 10;
+    float uv_diode_current_ma = 11;
+    bool uv_diode_relay_is_enabled = 12;
+    bool sbc_is_enabled = 13;
+    bool estop_is_triggered = 14;
+    bool nir_led_is_faulted = 15;
+    float distance_to_target_mm = 16;
+    float motor_x_position_mm = 17;
+    float motor_y_position_mm = 18;
+    float motor_z_position_mm = 19;
+    bool head_fan1_is_faulted = 20;
+    bool head_fan2_is_faulted = 21;
+    bool head_fan3_is_faulted = 22;
+    bool head_fan4_is_faulted = 23;
+    bool head_fan5_is_faulted = 24;
+    bool head_fan6_is_faulted = 25;
+    uint32 uptime_ms = 26;
+    string state = 27;
+}
+
+message ToServer {
+    oneof msg {
+        GetAbout get_about = 1;
+        GetSynchronizedCapture get_synchronized_capture = 2;
+        SetNirLedControls set_nir_led_controls = 3;
+        StartVideoStream start_video_stream = 4;
+        StopVideoStream stop_video_stream = 5;
+        SetExposureSettings set_exposure_settings = 6;
+        SetRegionOfInterest set_region_of_interest = 7;
+        HomeMotors home_motors = 8;
+        CalibrateDmd calibrate_dmd = 9;
+        SetCameraTriggerControls set_camera_trigger_controls = 10;
+        StartCalibration start_calibration = 11;
+        StartUvDiagnostic start_uv_diagnostic = 12;
+        CancelUvDiagnostic cancel_uv_diagnostic = 13;
+        GetWideCapture get_wide_capture = 14;
+        GetWideVideoStream get_wide_video_stream = 15;
+        StopWideVideoStream stop_wide_video_stream = 16;
+        UploadCalibrationTable upload_calibration_table = 17;
+        DistanceSensorStartRanging distance_sensor_start_ranging = 18;
+        DistanceSensorStopRanging distance_sensor_stop_ranging = 19;
+        SetDistanceSensorDeviceSettings set_distance_sensor_device_settings = 20;
+        SetUvDeviceSettings set_uv_device_settings = 21;
+        GetDeviceSettings get_device_settings = 22;
+    }
+}
+
+message FromServer {
+    oneof msg {
+        About about = 1;
+        SynchronizedCapture synchronized_capture = 2;
+        StreamFrame stream_frame = 3;
+        ExposureSettingsReponse exposure_response = 4;
+        RegionOfInterestResponse region_of_interest = 5;
+        MotorsHomed motors_homed = 6;
+        NirLedControlsResponse nir_led_controls_response = 7;
+        DmdCalibrated dmd_calibrated = 8;
+        CameraTriggerControlsResponse camera_trigger_controls_response = 9;
+        CalibrationResponse calibration_response = 10;
+        UvDiagnosticResponse uv_diagnostic_response = 11;
+        WideCapture wide_capture = 12;
+        WideStreamFrame wide_stream_frame = 13;
+        CalibrationResult calibration_result = 14;
+        DiagnosticResult diagnostic_result = 15;
+        UploadCalibrationTableResponse upload_calibration_table_response = 16;
+        DistanceSensorRangingResult distance_sensor_ranging_result = 17;
+        DeviceSettings device_settings = 18;
+    }
+}
